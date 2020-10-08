@@ -24,4 +24,3 @@ Do:
 
 * Use `double` — [Reference docs here](https://relishapp.com/rspec/rspec-mocks/v/3-5/docs/basics/test-doubles)
 * Use `expect(...).to receive(...)` [Reference docs here](https://relishapp.com/rspec/rspec-mocks/v/3-5/docs/basics/expecting-messages)
-# Testing The Relationships Between Classes
