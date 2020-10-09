@@ -20,13 +20,15 @@ require_relative '../lib/secret_diary'
 RSpec.describe SecretDiary do
   let(:new_diary) { SecretDiary.new(diary) }
   let(:diary) { double :diary }
+  let(:new_message) { double :new_message }
   context "when locked" do
     it "refuses to be read" do
       expect(new_diary.read).to eq "Go away!"
     end
   
-
-    pending "refuses to be written"
+    it "refuses to be written" do
+      expect(new_diary.write(new_message)).to eq "Go away!"
+    end
   end
 
   context "when unlocked" do
