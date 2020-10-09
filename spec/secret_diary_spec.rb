@@ -32,7 +32,9 @@ RSpec.describe SecretDiary do
   end
 
   context "when unlocked" do
-    pending "gets read"
+    it "gets read" do
+      expect(new_diary.unlock).to be (true)
+    end
 
     pending "gets written"
   end
