@@ -20,7 +20,6 @@ require_relative '../lib/secret_diary'
 RSpec.describe SecretDiary do
   let(:new_diary) { SecretDiary.new(diary) }
   let(:diary) { double :diary }
-  let(:write) { double :write }
   context "when locked" do
     it "refuses to be read" do
       expect(new_diary.read).to eq "Go away!"
@@ -33,13 +32,17 @@ RSpec.describe SecretDiary do
 
   context "when unlocked" do
     it "gets read" do
-      expect(new_diary.unlock).to be true
+      allow(diary).to receive(:write).and_return "new message"
+      allow(diary).to receive(:read).and_return "new message"
+      new_diary.unlock
+      new_diary.write("new message")
+      expect(new_diary.read).to eq "new message"
     end
 
     it "gets written" do
-      allow(diary).to receive(:write).and_return "new_message"
+      allow(diary).to receive(:write).and_return "new message"
       new_diary.unlock
-      expect(new_diary.write("new_message")).to be nil
+      expect(new_diary.write("new message")).to be nil
     end
   end
 end
